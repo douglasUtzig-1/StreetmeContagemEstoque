@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streetme - Contagem de Estoque</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 1rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .features {
+            padding: 4rem 1rem;
+            background: #f8f9fa;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .specs {
+            padding: 4rem 1rem;
+            background: white;
+        }
+
+        .specs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .spec-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .spec-item h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .roadmap {
+            padding: 4rem 1rem;
+            background: #f8f9fa;
+        }
+
+        .roadmap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .roadmap-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 3px solid #667eea;
+            position: relative;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .roadmap-item h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-item p {
+            color: #666;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .header-container {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">🏪 Streetme</div>
+            <nav>
+                <a href="#features">Funcionalidades</a>
+                <a href="#specs">Especificações</a>
+                <a href="#roadmap">Roadmap</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Contagem de Estoque Simplificada</h1>
+            <p>Sistema web responsivo e intuitivo para gerenciamento de estoque de sua cafeteria. Rápido, eficiente e preparado para escalar.</p>
+            <a href="index.html" class="cta-button">Acessar Aplicação</a>
+            <a href="https://github.com/douglasUtzig-1/StreetmeContagemEstoque" class="cta-button secondary">Ver no GitHub</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-container">
+            <h2 class="section-title">Funcionalidades Principais</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile-First</h3>
+                    <p>Interface otimizada para dispositivos móveis, permitindo contagem rápida e intuitiva em qualquer lugar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Persistência Local</h3>
+                    <p>Dados salvos automaticamente no navegador. Seu progresso não será perdido, mesmo sem conexão.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Validação Inteligente</h3>
+                    <p>Sistema de validação garante que todos os dados sejam preenchidos corretamente antes de salvar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Rápido e Leve</h3>
+                    <p>Sem dependências externas pesadas. Aplicação rápida e responsiva em qualquer dispositivo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Interface Clara</h3>
+                    <p>Design limpo e intuitivo com feedback visual para cada ação realizada.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Pronto para Banco de Dados</h3>
+                    <p>Arquitetura preparada para integração futura com banco de dados e API backend.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs" id="specs">
+        <div class="specs-container">
+            <h2 class="section-title">Especificações Técnicas</h2>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <h4>📦 Lista de Produtos</h4>
+                    <p>41 produtos pré-configurados para contagem de estoque de cafeteria, incluindo xaropes, bebidas, ingredientes e acessórios.</p>
+                </div>
+                <div class="spec-item">
+                    <h4>🔢 Campos de Entrada</h4>
+                    <p>Quantidade Aberta, Quantidade Fechada e status "ACABOU" para cada produto, com validação automática.</p>
+                </div>
+                <div class="spec-item">
+                    <h4>💻 Tecnologia</h4>
+                    <p>HTML5, CSS3 e JavaScript Vanilla. Sem frameworks pesados, apenas código limpo e eficiente.</p>
+                </div>
+                <div class="spec-item">
+                    <h4>🌐 Compatibilidade</h4>
+                    <p>Funciona em todos os navegadores modernos (Chrome, Firefox, Safari, Edge) em desktop e mobile.</p>
+                </div>
+                <div class="spec-item">
+                    <h4>💾 Armazenamento</h4>
+                    <p>Dados salvos em localStorage do navegador com sincronização automática a cada mudança.</p>
+                </div>
+                <div class="spec-item">
+                    <h4>🚀 Performance</h4>
+                    <p>Carregamento instantâneo e interface responsiva, otimizada para conexões lentas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+        <div class="roadmap-container">
+            <h2 class="section-title">Roadmap do Projeto</h2>
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <h4>✅ Fase 1: MVP (Concluída)</h4>
+                    <p>Interface web responsiva, lista de produtos, campos de entrada e persistência local implementados.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h4>🔄 Fase 2: Integração com Banco de Dados (Próxima)</h4>
+                    <p>Implementação de backend API, autenticação de usuários e sincronização com banco de dados centralizado.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h4>📊 Fase 3: Relatórios e Análises</h4>
+                    <p>Dashboard com gráficos, histórico de contagens, alertas de produtos com baixo estoque.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h4>👥 Fase 4: Gerenciamento de Usuários</h4>
+                    <p>Sistema de permissões, rastreamento de quem fez cada contagem, auditoria de alterações.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h4>📱 Fase 5: Aplicativo Nativo</h4>
+                    <p>Versão mobile nativa para iOS e Android com sincronização offline-first.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="hero-content">
+            <h2>Pronto para Começar?</h2>
+            <p>Acesse a aplicação agora e comece a contar seu estoque de forma rápida e eficiente.</p>
+            <a href="index.html" class="cta-button">Acessar Aplicação</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/douglasUtzig-1/StreetmeContagemEstoque">GitHub</a>
+                <a href="https://github.com/douglasUtzig-1">Desenvolvedor</a>
+                <a href="mailto:contact@streetme.com">Contato</a>
+            </div>
+            <p>&copy; 2026 Streetme. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
